@@ -31,7 +31,7 @@
 
 ```bash
 # Clone the repository
-git clone [https://github.com/goudawolfdev/SubScope.git](https://github.com/goudawolfdev/SubScope.git)
+git clone https://github.com/GoudaWolfDev/SubScope.git
 
 # Navigate to the project directory
 cd SubScope
