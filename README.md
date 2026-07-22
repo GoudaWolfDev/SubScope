@@ -1,40 +1,96 @@
-# 🎯 SubScope
+# SubScope - High-Performance Asset Recon Suite 🚀
 
-> High-Performance, Multithreaded Web Asset Filter & Live Status Checker.
+An advanced, high-performance asset discovery, subdomain harvesting, port scanning, subdomain takeover verification, and WHOIS/RDAP query suite.
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Developer](https://img.shields.io/badge/Developer-D33P--X-cyan.svg)](#-author)
+![SubScope](sc.png)
 
-**SubScope** is a fast, lightweight, multithreaded Python tool designed for security researchers, sysadmins, and bug bounty hunters to resolve, verify, and filter large lists of subdomains and web assets in real-time.
-
----
-
-## 📸 Preview
-
-![SubScope Terminal Screenshot](sc.png)
+## License
+Licensed under the [MIT License](LICENSE).
 
 ---
 
-## ✨ Key Features
+## English Version
 
-- 🚀 **High-Speed Probing**: Parallel execution using Python's `ThreadPoolExecutor`.
-- ⚡ **Smart DNS Pre-Check**: Fast socket lookup to skip unresolvable domains and prevent thread hanging.
-- 🔄 **Dual Probing Logic**: Utilizes fast HTTP `HEAD` requests with automatic `GET` fallback.
-- 🎨 **Rich Terminal Interface**: Interactive progress bar and formatted summary table powered by `rich`.
-- 📂 **Categorized Output**: Automatically groups domains by HTTP status codes (`200 OK`, `Redirects`, `Protected`, `404s`, `Server Errors`).
-- 📄 **Multiple Formats**: Export results into clean human-readable text logs or structured `JSON`.
+### Key Features
+1. **Deep Subdomain Harvesting**:
+   - Collects subdomains passively from `crt.sh`, `AlienVault OTX`, `RapidDNS`, and `HackerTarget`.
+   - Wildcard detection to filter out false positives.
+   - Permutation scanning to discover hidden assets.
+2. **Subdomain Takeover Checker**:
+   - Analyzes CNAME and body signatures for AWS S3, GitHub Pages, Heroku, Shopify, Zendesk, Squarespace, etc.
+3. **Async Port Scanner**:
+   - High-concurrency port scanning powered by `asyncio` with rate limiting.
+   - Deconstructs TLS/SSL certificates and extracts service banners.
+4. **WHOIS & RDAP Query**:
+   - Queries registrar records via RDAP JSON or WHOIS fallback.
+5. **Diff Mode**:
+   - Compare two scan result JSON outputs to view added, removed, or changed assets.
+6. **Premium Dashboard Reports**:
+   - Exports results to interactive HTML dashboards, CSV, and JSON.
 
----
-
-## 🛠️ Installation
-
+### Installation
+Verify dependencies and install requirements:
 ```bash
-# Clone the repository
-git clone https://github.com/GoudaWolfDev/SubScope.git
-
-# Navigate to the project directory
-cd SubScope
-
-# Install required dependencies
 pip install -r requirements.txt
+```
+
+### Usage Examples
+- **Perform Full Reconnaissance**:
+  ```bash
+  python subscope.py run -d target.com -o output_result --permutations
+  ```
+- **Harvest Subdomains only**:
+  ```bash
+  python subscope.py enum -d target.com
+  ```
+- **Scan Ports only**:
+  ```bash
+  python subscope.py ports -d target.com --ports 22,80,443,8080 --rate 150
+  ```
+- **WHOIS Query**:
+  ```bash
+  python subscope.py whois -d target.com
+  ```
+- **Compare Scans**:
+  ```bash
+  python subscope.py diff old_scan.json new_scan.json
+  ```
+
+---
+
+## النسخة العربية (Arabic Version)
+
+### الميزات الرئيسية
+1. **جمع نطاقات فرعية عميق**:
+   - الاستخراج من مصادر متعددة غير نشطة: `crt.sh`, `AlienVault OTX`, `RapidDNS`, `HackerTarget`.
+   - فحص الـ Wildcards الذكي وتخمين الـ Permutations.
+2. **فحص ثغرات Takeover**:
+   - التحقق التلقائي لخدمات الطرف الثالث الشهيرة.
+3. **فحص منافذ متزامن فائق السرعة**:
+   - يعتمد على `asyncio` بالكامل مع سحب شهادات الـ TLS والـ Banners.
+4. **سجلات WHOIS / RDAP**:
+   - يدعم استعلامات RDAP الهيكلية المتطورة.
+5. **أداة مقارنة النتائج (Diff Mode)**:
+   - تتبع الاختلافات بين عمليتي فحص مختلفتين بسهولة.
+6. **تقارير احترافية**:
+   - إنتاج لوحة تحكم HTML متميزة إلى جانب تقارير CSV و JSON.
+
+### التثبيت
+للتحقق من المتطلبات وتثبيتها:
+```bash
+pip install -r requirements.txt
+```
+
+### أمثلة التشغيل
+- **تشغيل فحص شامل**:
+  ```bash
+  python subscope.py run -d target.com -o output_result --permutations
+  ```
+- **جمع النطاقات الفرعية**:
+  ```bash
+  python subscope.py enum -d target.com
+  ```
+
+---
+
+*Developer: goudawolfdev | D33P-X (Gouda Nasralla)*
