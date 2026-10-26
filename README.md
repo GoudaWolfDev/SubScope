@@ -5,8 +5,7 @@ An advanced, high-performance asset discovery, subdomain harvesting, port scanni
 ![SubScope](sc.png)
 
 ## License
-Licensed under the [MIT License](LICENSE).
-
+Licensed under the [Personal Use License](LICENSE).
 ---
 
 ## English Version
